@@ -1,0 +1,34 @@
+<%- include('../partials/header') %>
+
+<h1>Categorias</h1>
+
+<p><a href="/categorias/nova">Nova categoria</a></p>
+
+<% if (categorias.length === 0) { %>
+  <p>Nenhuma categoria cadastrada.</p>
+<% } else { %>
+<table border="1">
+  <tr>
+    <th>Nome</th>
+    <th>Produtos</th>
+    <th>Ações</th>
+  </tr>
+
+  <% categorias.forEach(c => { %>
+    <tr>
+      <td><%= c.nome %></td>
+      <td><%= c.Produtos.length %></td>
+      <td>
+        <a href="/produtos/categoria/<%= c.id %>">Ver produtos</a>
+
+        <form action="/categorias/<%= c.id %>/deletar" method="POST" style="display:inline"
+              onsubmit="return confirm('Excluir esta categoria? Os produtos ficarão sem categoria.')">
+          <button type="submit">Excluir</button>
+        </form>
+      </td>
+    </tr>
+  <% }) %>
+</table>
+<% } %>
+
+<%- include('../partials/footer') %>

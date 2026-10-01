@@ -1,0 +1,16 @@
+<%- include('../partials/header') %>
+
+<h1>Nova categoria</h1>
+
+<% if (erro) { %><p class="erro"><%= erro %></p><% } %>
+
+<form action="/categorias" method="POST">
+  <label>Nome:</label>
+  <input type="text" name="nome" required>
+  <br>
+
+  <button type="submit">Salvar</button>
+  <a href="/categorias">Cancelar</a>
+</form>
+
+<%- include('../partials/footer') %>

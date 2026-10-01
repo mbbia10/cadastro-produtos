@@ -1,0 +1,33 @@
+<%- include('../partials/header') %>
+
+<h1>Editar produto</h1>
+
+<form action="/produtos/<%= produto.id %>" method="POST">
+
+  <label>Nome:</label>
+  <input type="text" name="nome" value="<%= produto.nome %>" required>
+  <br>
+
+  <label>Preço:</label>
+  <input type="number" name="preco" step="0.01" min="0" value="<%= produto.preco %>" required>
+  <br>
+
+  <label>Quantidade:</label>
+  <input type="number" name="quantidade" min="0" value="<%= produto.quantidade %>">
+  <br>
+
+  <label>Categoria:</label>
+  <select name="categoriaId">
+    <option value="">— Sem categoria —</option>
+    <% categorias.forEach(c => { %>
+      <option value="<%= c.id %>" <%= c.id === produto.categoriaId ? 'selected' : '' %>><%= c.nome %></option>
+    <% }) %>
+  </select>
+  <br>
+
+  <button type="submit">Atualizar</button>
+  <a href="/produtos">Cancelar</a>
+
+</form>
+
+<%- include('../partials/footer') %>
